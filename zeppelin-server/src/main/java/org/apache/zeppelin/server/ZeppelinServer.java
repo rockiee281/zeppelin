@@ -52,6 +52,7 @@ import org.apache.zeppelin.rest.NotebookRepoRestApi;
 import org.apache.zeppelin.rest.NotebookRestApi;
 import org.apache.zeppelin.rest.SecurityRestApi;
 import org.apache.zeppelin.rest.ZeppelinRestApi;
+import org.apache.zeppelin.rest.CasLogin;
 import org.apache.zeppelin.scheduler.SchedulerFactory;
 import org.apache.zeppelin.search.LuceneSearch;
 import org.apache.zeppelin.search.SearchService;
@@ -392,6 +393,9 @@ public class ZeppelinServer extends Application {
 
     ConfigurationsRestApi settingsApi = new ConfigurationsRestApi(notebook);
     singletons.add(settingsApi);
+
+    CasLogin casLogin = new CasLogin();
+    singletons.add(casLogin);
 
     return singletons;
   }

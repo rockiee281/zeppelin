@@ -113,7 +113,9 @@ function NavCtrl($scope, $rootScope, $http, $routeParams, $location,
           message: 'Logout Success'
         });
         setTimeout(function() {
-          window.location.replace('/');
+//          window.location.replace('/');
+         window.location
+         .replace('https://sso.corp.11bee.com/sso/logout?service=' + baseUrlSrv.getRestApiBase() + '/casLogin');
         }, 1000);
       });
     });

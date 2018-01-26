@@ -77,6 +77,7 @@
         <artifactId>scalap</artifactId>
         <version>${scala.version}</version>
       </dependency>
+
     </dependencies>
   </dependencyManagement>
 
@@ -86,6 +87,11 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>zeppelin-zengine</artifactId>
       <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-cas</artifactId>
     </dependency>
 
     <dependency>
