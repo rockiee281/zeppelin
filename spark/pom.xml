@@ -318,6 +318,15 @@
     </dependency>
 
   </dependencies>
+ <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.apache.hadoop</groupId>
+        <artifactId>hadoop-common</artifactId>
+        <version>${hadoop.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <build>
     <plugins>
@@ -599,7 +608,7 @@
         <avro.mapred.classifier>hadoop2</avro.mapred.classifier>
       </properties>
     </profile>
-
+    
     <profile>
       <id>hadoop-2.7</id>
       <properties>

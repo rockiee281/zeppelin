@@ -85,6 +85,8 @@ import scala.tools.nsc.interpreter.Results;
 import scala.tools.nsc.settings.MutableSettings;
 import scala.tools.nsc.settings.MutableSettings.BooleanSetting;
 import scala.tools.nsc.settings.MutableSettings.PathSetting;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.CommonConfigurationKeysPublic;
 
 /**
  * Spark interpreter for Zeppelin.
@@ -586,6 +588,13 @@ public class SparkInterpreter extends Interpreter {
       try {
         String keytab = getProperty().getProperty("spark.yarn.keytab");
         String principal = getProperty().getProperty("spark.yarn.principal");
+        String protection = getProperty().getProperty("hadoop.rpc.protection");
+        if (protection != null) {
+          Configuration conf = new Configuration();
+          conf.set(CommonConfigurationKeysPublic.HADOOP_RPC_PROTECTION, protection);
+          UserGroupInformation.setConfiguration(conf);
+        }
+
         UserGroupInformation.loginUserFromKeytab(principal, keytab);
       } catch (IOException e) {
         throw new RuntimeException("Can not pass kerberos authentication", e);
