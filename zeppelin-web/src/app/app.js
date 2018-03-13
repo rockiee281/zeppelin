@@ -154,6 +154,7 @@ function auth() {
     });
   }, function(errorResponse) {
     // Handle error case
+    window.location.replace(baseUrlSrv.getRestApiBase()+'/casLogin');
   });
 }
 
